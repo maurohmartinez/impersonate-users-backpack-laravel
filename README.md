@@ -2,7 +2,7 @@
 <p>A simple package to allow admins impersonate users.</p>
 
 ```sh
-   composer require maurohmartinez/impersonate-users-backpack-laravel --provider="MHMartinez\ImpersonateUser\Providers\ForceSslServiceProvider"
+   composer require maurohmartinez/impersonate-users-backpack-laravel
 ```
 
 <p>Publish the files to work with!</p>
