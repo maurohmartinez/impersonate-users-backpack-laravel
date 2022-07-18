@@ -50,3 +50,5 @@ public function canBeImpersonated(): bool
 @include('impersonate_user::exit_impersonated')
 ```
 ## Credits
+- [Mauro Martinez](https://inspiredpulse.com/) Developer
+- [Cristian Tabacitu](https://tabacitu.ro/) For creating [Backpack for Laravel](https://backpackforlaravel.com/)!
