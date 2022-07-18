@@ -23,7 +23,7 @@ use \MHMartinez\ImpersonateUser\app\Http\Controllers\Operations\ImpersonateUserO
 ```
 This will add a button for List and Show Operations to impersonate users.
 
-2- [Optional] Adding a custom logic to indicate which admins have permission to impersonate others, or can be impersonated, is very easy. You just need to modify a bit your `User Model` to implement the interface `ImpersonateInterface` like this:
+2- Next step is to handle the logic to indicate which admins have permission to impersonate others, or can be impersonated. You just need to modify a bit your `User Model` to implement the interface `ImpersonateInterface` like this:
 ```php
 class User extends Authenticatable implements ImpersonateInterface
 ```
