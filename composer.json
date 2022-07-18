@@ -1,0 +1,38 @@
+{
+    "name": "maurohmartinez/impersonate-users-backpack-laravel",
+    "description": "A simple package that adds the impersonate operation for admins",
+    "type": "library",
+    "require": {
+        "php": "^7.3|^8.0",
+        "laravel/framework": "^8.0.0|^9.0.0",
+        "backpack/crud": "^5.0"
+    },
+    "keywords": [
+        "backpack",
+        "laravel",
+        "force ssl"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "maurohmartinez",
+            "email": "maurohmartinez@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "MHMartinez\\ImpersonateUser\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "MHMartinez\\ImpersonateUser\\app\\Providers\\ImpersonateUserServiceProvider"
+            ],
+            "aliases": {
+                "ImpersonateUser": "MHMartinez\\ImpersonateUser\\Facade"
+            }
+        }
+    }
+}
