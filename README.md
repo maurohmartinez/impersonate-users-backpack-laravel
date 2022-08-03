@@ -49,6 +49,20 @@ public function canBeImpersonated(): bool
 ```php
 @include('impersonate_user::exit_impersonated')
 ```
+
+4- Important — If you want to impersonate non-admin users you will need to skip the backpack middleware that determines if the user is admin. This is because this operation will need to allow your impersonated non-admin user to use a backpack route to log you back. How to do it?
+
+- Publish the config file if you haven't done so (described here, above step one).
+- Add the middleware classname like it follows, and you will be good to go:
+```php
+return [
+    'session_key' => 'impersonating_user',
+    'base_guard' => 'backpack',
+    'admin_middleware' => Path\To\Middleware\IsAdmin::class,
+];
+```
+This will allow this operation to skip that middleware when logging out impersonated non-admin users.
+
 ## Credits
 - [Mauro Martinez](https://inspiredpulse.com/) Developer
 - [Cristian Tabacitu](https://tabacitu.ro/) For creating [Backpack for Laravel](https://backpackforlaravel.com/)!

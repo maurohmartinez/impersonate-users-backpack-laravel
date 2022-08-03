@@ -24,7 +24,8 @@ trait ImpersonateUserOperation
             'as'        => $routeName.'.exitImpersonatedUser',
             'uses'      => $controller.'@exitImpersonatedUser',
             'operation' => 'exitImpersonatedUser',
-        ]);
+        ])
+            ->withoutMiddleware(config('impersonate_user.admin_middleware'));
     }
 
     protected function setupImpersonateUserDefaults()
