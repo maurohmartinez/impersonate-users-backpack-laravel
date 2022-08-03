@@ -18,7 +18,7 @@ class ImpersonateUserServiceProvider extends ServiceProvider
         $this->loadTranslationsFrom(__DIR__ . '/../../resources/lang', 'impersonate_user');
         $this->publishes([
             __DIR__ . '/../../resources/lang' => $this->app->langPath('vendor/impersonate_user'),
-        ]);
+        ], 'lang');
 
         // Views
         $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'impersonate_user');

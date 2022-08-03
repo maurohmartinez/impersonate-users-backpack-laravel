@@ -13,7 +13,7 @@ composer require maurohmartinez/impersonate-users-backpack-laravel
 In case you want/need to publish files to further customize this package:
 
 ```sh
-php artisan vendor:publish maurohmartinez/impersonate-users-backpack-laravel --provider="MHMartinez\ImpersonateUser\Providers\ImpersonateUserServiceProvider"
+php artisan vendor:publish --provider="MHMartinez\ImpersonateUser\app\Providers\ImpersonateUserServiceProvider"
 ```
 
 ## Usage
@@ -53,6 +53,9 @@ public function canBeImpersonated(): bool
 4- Important — If you want to impersonate non-admin users you will need to skip the backpack middleware that determines if the user is admin. This is because this operation will need to allow your impersonated non-admin user to use a backpack route to log you back. How to do it?
 
 - Publish the config file if you haven't done so (described here, above step one).
+```php
+php artisan vendor:publish --provider="MHMartinez\ImpersonateUser\app\Providers\ImpersonateUserServiceProvider" --tag=config
+```
 - Add the middleware classname like it follows, and you will be good to go:
 ```php
 return [
