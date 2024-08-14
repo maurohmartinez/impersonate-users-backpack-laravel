@@ -78,6 +78,8 @@ trait ImpersonateUserOperation
         }
 
         // Login
+        Auth::guard(config('impersonate_user.base_guard'))->logout();
+        Session::flush();
         Auth::guard(config('impersonate_user.base_guard'))->loginUsingId($id, false);
 
         // Remember impersonator session
@@ -102,13 +104,12 @@ trait ImpersonateUserOperation
         }
 
         // Login impersonator back
-        Auth::guard(config('impersonate_user.base_guard'))->loginUsingId(intval(Session::get(config('impersonate_user.session_key'))));
-
-        // Remove impersonator session
-        Session::forget(config('impersonate_user.session_key'));
+        Auth::guard(config('impersonate_user.base_guard'))->logout();
+        $idOriginalUser = intval(Session::get(config('impersonate_user.session_key')));
         $redirect = Session::get(config('impersonate_user.session_key') . '_last_url');
-        Session::forget(config('impersonate_user.session_key') . '_last_url');
-        Session::forget(config('impersonate_user.session_key') . '_exit_route');
+
+        Session::flush();
+        Auth::guard(config('impersonate_user.base_guard'))->loginUsingId($idOriginalUser);
 
         // Feedback
         Alert::add('success', __('impersonate_user::messages.back_after_impersonating', ['username' => backpack_user()->name]))->flash();
