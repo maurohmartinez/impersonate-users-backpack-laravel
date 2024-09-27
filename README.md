@@ -1,4 +1,8 @@
 # Impersonate users with Backpack for Laravel
+
+[![Latest Version on Packagist][ico-version]][link-packagist]
+[![Total Downloads][ico-downloads]][link-packagist]
+
 This is a simple package to allow admins impersonate users.
 
 ![alt text](https://github.com/maurohmartinez/impersonate-users-backpack-laravel/blob/main/src/sample.gif?raw=true)
@@ -69,3 +73,8 @@ This will allow this operation to skip that middleware when logging out imperson
 ## Credits
 - [Mauro Martinez](https://inspiredpulse.com/) Developer
 - [Cristian Tabacitu](https://tabacitu.ro/) For creating [Backpack for Laravel](https://backpackforlaravel.com/)!
+
+[ico-version]: https://img.shields.io/packagist/v/maurohmartinez/impersonate-users-backpack-laravel.svg?style=flat-square
+[ico-downloads]: https://img.shields.io/packagist/dt/maurohmartinez/impersonate-users-backpack-laravel.svg?style=flat-square
+
+[link-packagist]: https://packagist.org/packages/maurohmartinez/impersonate-users-backpack-laravel
