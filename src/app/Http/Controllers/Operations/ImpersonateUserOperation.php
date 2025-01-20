@@ -18,14 +18,15 @@ trait ImpersonateUserOperation
             'as'        => $routeName.'.impersonateUser',
             'uses'      => $controller.'@impersonateUser',
             'operation' => 'impersonateUser',
-        ]);
+        ])
+            ->withoutMiddleware(config('impersonate_user.skip_middlewares'));
 
         Route::post($segment.'/exit-impersonated-user', [
             'as'        => $routeName.'.exitImpersonatedUser',
             'uses'      => $controller.'@exitImpersonatedUser',
             'operation' => 'exitImpersonatedUser',
         ])
-            ->withoutMiddleware(config('impersonate_user.admin_middleware'));
+            ->withoutMiddleware(array_merge(config('impersonate_user.admin_middleware') ?? [], config('impersonate_user.skip_middlewares') ?? []));
     }
 
     protected function setupImpersonateUserDefaults()
