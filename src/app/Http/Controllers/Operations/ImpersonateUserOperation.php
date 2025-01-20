@@ -19,7 +19,7 @@ trait ImpersonateUserOperation
             'uses'      => $controller.'@impersonateUser',
             'operation' => 'impersonateUser',
         ])
-            ->withoutMiddleware(config('impersonate_user.skip_middlewares'));
+            ->withoutMiddleware(config('impersonate_user.skip_middlewares') ?? []);
 
         Route::post($segment.'/exit-impersonated-user', [
             'as'        => $routeName.'.exitImpersonatedUser',
