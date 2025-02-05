@@ -14,19 +14,22 @@ trait ImpersonateUserOperation
 {
     protected function setupImpersonateUserRoutes(string $segment, string $routeName, string $controller)
     {
-        Route::post($segment.'/impersonate-user/{id}', [
-            'as'        => $routeName.'.impersonateUser',
-            'uses'      => $controller.'@impersonateUser',
+        Route::post($segment . '/impersonate-user/{id}', [
+            'as' => $routeName . '.impersonateUser',
+            'uses' => $controller . '@impersonateUser',
             'operation' => 'impersonateUser',
         ])
-            ->withoutMiddleware(config('impersonate_user.skip_middlewares') ?? []);
+            ->withoutMiddleware(config('impersonate_user.skip_middlewares'));
 
-        Route::post($segment.'/exit-impersonated-user', [
-            'as'        => $routeName.'.exitImpersonatedUser',
-            'uses'      => $controller.'@exitImpersonatedUser',
+        Route::post($segment . '/exit-impersonated-user', [
+            'as' => $routeName . '.exitImpersonatedUser',
+            'uses' => $controller . '@exitImpersonatedUser',
             'operation' => 'exitImpersonatedUser',
         ])
-            ->withoutMiddleware(array_merge(config('impersonate_user.admin_middleware') ?? [], config('impersonate_user.skip_middlewares') ?? []));
+            ->withoutMiddleware([
+                config('impersonate_user.admin_middleware'),
+                config('impersonate_user.skip_middlewares') ?? [],
+            ]);
     }
 
     protected function setupImpersonateUserDefaults()
