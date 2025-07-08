@@ -66,6 +66,7 @@ return [
     'session_key' => 'impersonating_user',
     'base_guard' => 'backpack',
     'admin_middleware' => Path\To\Middleware\IsAdmin::class,
+    'skip_middlewares' => [],
 ];
 ```
 This will allow this operation to skip that middleware when logging out impersonated non-admin users.
