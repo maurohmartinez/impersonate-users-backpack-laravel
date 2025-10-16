@@ -10,7 +10,7 @@ class EventServiceProvider extends ServiceProvider
 {
     public function boot(): void
     {
-        if (class_exists('\MHMartinez\TwoFactorAuth\app\Listeners\ReLoginUserListener', false)) {
+        if (class_exists('\MHMartinez\TwoFactorAuth\app\Listeners\ReLoginUserListener', true)) {
             Event::listen(
                 UserFinishedImpersonating::class,
                 '\MHMartinez\TwoFactorAuth\app\Listeners\ReLoginUserListener',
