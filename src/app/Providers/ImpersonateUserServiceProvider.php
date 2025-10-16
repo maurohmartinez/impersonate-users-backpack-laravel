@@ -32,5 +32,7 @@ class ImpersonateUserServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(
             __DIR__ . '/../../config/impersonate_user.php', 'impersonate_user'
         );
+
+        $this->app->register(EventServiceProvider::class);
     }
 }

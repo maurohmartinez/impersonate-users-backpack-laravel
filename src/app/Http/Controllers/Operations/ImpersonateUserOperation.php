@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
+use MHMartinez\ImpersonateUser\app\Events\UserFinishedImpersonating;
 use MHMartinez\ImpersonateUser\app\Interfaces\ImpersonateInterface;
 use Prologue\Alerts\Facades\Alert;
 
@@ -114,6 +115,8 @@ trait ImpersonateUserOperation
 
         Session::flush();
         Auth::guard(config('impersonate_user.base_guard'))->loginUsingId($idOriginalUser);
+
+        UserFinishedImpersonating::dispatch($this->crud->validateRequest());
 
         // Feedback
         Alert::add('success', __('impersonate_user::messages.back_after_impersonating', ['username' => backpack_user()->name]))->flash();
